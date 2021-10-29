@@ -11,4 +11,4 @@ main.o: main.cpp
 .PHONY: clean
 clean:
 	rm *.o
-	rm memory_sample
+	rm cpp_output_formatting

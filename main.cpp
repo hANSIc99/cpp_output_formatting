@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ostream>
 #include <vector>
 #include <iomanip>
 
@@ -23,6 +24,31 @@ ostream& myManipulator(ostream& os) {
 
     return os;
 }
+
+
+struct T_Importance {
+     int levelOfSignificance;
+};
+
+
+T_Importance importance(int lvl){ 
+
+    T_Importance x = {.levelOfSignificance = lvl };
+    return x;
+}
+
+
+
+ostream& operator<<(ostream& __os, T_Importance t){
+
+    for(int i = 0; i < t.levelOfSignificance; ++i){
+        __os.put('!');
+    }
+    
+    return __os;
+}
+
+
 
 int main()
 {
@@ -139,7 +165,8 @@ int main()
     cout << showbase << put_money(specialOffering) << endl;
 
 
-    cout << "Mz custom manipulator: " << myManipulator << endl;
+    cout << "My custom manipulator: " << myManipulator << endl;
+    cout << "I have something to say" << importance(5) << endl;
 
     TESTANWEISUNG(std::cout << "Test ein!" << std::endl;)
 }   
