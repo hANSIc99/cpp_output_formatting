@@ -4,15 +4,6 @@
 #include <iomanip>
 #include <ctime>
 
-#define TEST_EIN
-#ifdef TEST_EIN
-    #define TESTANWEISUNG(irgendwas) irgendwas
-#else
-    #define TESTANWEISUNG(irgendwas) /* nichts */
-#endif
-const double PI = 3.1415926535;
-const bool TEST_EIN_B = false;
-
 using namespace std;
 
 
@@ -49,32 +40,13 @@ ostream& operator<<(ostream& __os, T_Importance t){
 
 int main()
 {
-    std::cout << "Start" << std::endl;
-
-
-
-    int n_a = 0;
-    int* n_pA = &n_a;
-    int n_b = 0;
-
-    /* switch overload */
-
-    unsigned long someAddress = 0x0000ABCD;
-    cout << "Treat as unsigned long: " << someAddress << endl;
-    cout << "Treat as address: " << (void*)someAddress << endl
-    ;
-
-    /* print boolean */
-
-    cout << "Boolean output without using boolalpha: " << true << " / " << false << endl;
-    cout << "Boolean output using boolalpha: " << boolalpha << true << " / " << false << endl;
-
+    std::cout << "Start" << std::endl;    
 
     /* print right-justified*/
 
     cout.setf(ios::right, ios::adjustfield);
     cout.width(50);
-    cout << "This text is right justified \n";
+    cout << "This text is right justified" << endl;
     cout << "This text is left justified again" << endl;
 
 
@@ -92,14 +64,20 @@ int main()
     cout << left << setfill('.') << setw(20) << "Noodles" << right << setfill('.') << setw(20) << 800 << " g" << endl;
     cout << left << setfill('.') << setw(20) << "Beer" << right << setfill('.') << setw(20) << 20 << " Bottles" << endl;
 
+    /* print boolean */
 
-    /* Print addresses */
+    cout << "Boolean output without using boolalpha: " << true << " / " << false << endl;
+    cout << "Boolean output using boolalpha: " << boolalpha << true << " / " << false << endl;
 
-    cout << left << setw(10) << "&n_a" << right << setw(10) << "0x" << n_pA << endl;
-    cout << left << setw(10) << "&n_b" << right << setw(10) << "0x" << &n_b << endl;
+    /* addresses */
+
+    unsigned long someAddress = 0x0000ABCD;
+    cout << "Treat as unsigned long: " << someAddress << endl;
+    cout << "Treat as address: " << (void*)someAddress << endl;
 
 
-    /* number format */
+
+    /* integers */
 
     int myInt = 123;
 
@@ -113,7 +91,7 @@ int main()
     cout.unsetf(ios::basefield);
 
 
-    /* leading zeros */
+    /* padding with zeros */
 
     cout << setfill('0') << setw(7) << 3 << endl;
     cout << setfill('0') << setw(7) << 35 << endl;
@@ -121,7 +99,7 @@ int main()
     cout << setfill('0') << setw(7) << 3579 << endl;
 
 
-    /* FLoating point values */
+    /* floating point values */
 
     double myFloat = 1234.123456789012345;
     int defaultPrecision = cout.precision();
